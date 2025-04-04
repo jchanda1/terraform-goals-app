@@ -1,17 +1,4 @@
 terraform {
-  #############################################################
-  ## AFTER RUNNING TERRAFORM APPLY (WITH LOCAL BACKEND)
-  ## YOU WILL UNCOMMENT THIS CODE THEN RERUN TERRAFORM INIT
-  ## TO SWITCH FROM LOCAL BACKEND TO REMOTE AWS BACKEND
-  #############################################################
-  # backend "s3" {
-  #   bucket         = "joyanto-deploying-udemy-tf" # REPLACE WITH YOUR BUCKET NAME
-  #   key            = "09-udemy/deploying-single-container/terraform.tfstate"
-  #   region         = "eu-west-2"
-  #   dynamodb_table = "terraform-state-locking"
-  #   encrypt        = true
-  # }
-
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -25,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket        = "joyanto-deploying-udemy-tf" # REPLACE WITH YOUR BUCKET NAME
+  bucket        = "joyanto-deploying-udemy-tf"
   force_destroy = true
 }
 
